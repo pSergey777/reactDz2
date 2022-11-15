@@ -1,0 +1,15 @@
+.navBar{
+    background-color: #4F55D6;
+}
+
+.navBar a {
+    color: #FFF;
+  }
+  
+.navBar a:hover {
+     opacity: 0.6;
+  }
+
+  .name{
+    margin: 0 16px 0 0;
+  }

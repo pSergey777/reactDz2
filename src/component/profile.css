@@ -1,0 +1,16 @@
+.profile{
+    background-color: white;
+    height: 400px;
+    width: 100%;
+
+}
+
+.content{
+    padding: 32px;
+}
+
+.profile h1{
+    margin: 0;
+    padding: 0;
+}
+
