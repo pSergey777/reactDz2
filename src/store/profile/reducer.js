@@ -1,5 +1,5 @@
 const initialState = {
-    name: "Serg"
+    name: "Matt Damon"
 };
  
 export const profileReducer = (state = initialState) => {

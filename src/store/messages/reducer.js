@@ -1,39 +1,37 @@
-import {UPDATE_MESSAGES} from "./actions";
-import YohAsakuraImg from "../../assets/img/io-asakura.jpg"
-import AbnormalGuyImg from "../../assets/img/unnormal-guy.jpg"
-import MarinaNotGuyImg from "../../assets/img/marina.jpg"
+import {ADD_MESSAGE} from "./actions";
+import {AUTHORS} from "../../utils/constants"
 
 const initialState = {
-    messages: [{
-            chatId: "brendon1",
-            name: "Brendon Urie",
-            picture: AbnormalGuyImg,
-            messages: []
-        },
-        {
-            chatId: "yoh1",
-            name: "Yoh Asakura",
-            picture: YohAsakuraImg,
-            messages: []
-        },
-        {
-            chatId: "marina1",
-            name: "Marina Diamandis",
-            picture: MarinaNotGuyImg,
-            messages: []
-        }
-    ],
+   messageList:{
+       brendon1: [
+           {author: AUTHORS.HUMAN, text: "Hello"},
+           {author: AUTHORS.BOT, text: "Hey yow!"}],
+       yoh1: [
+           {author: AUTHORS.HUMAN, text: "Hello"},
+           {author: AUTHORS.BOT, text: "Hola q tal"}
+       ],
+       marina1: [
+           {author: AUTHORS.HUMAN, text: "Hello"},
+           {author: AUTHORS.BOT, text: "My name is Marina"}
+       ]
+   }
 };
 
-export const chatMessageReducer = (state = initialState, action) => {
+export const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_MESSAGES: {
+        case ADD_MESSAGE: {
             return {
                 ...state,
-                messages: action.updatedMessages
+                messageList: {
+                    ...state.messageList,
+                    [action.payload.chatId]: [
+                        ...state.messageList[action.payload.chatId],
+                        action.payload.message,
+                    ],
+                },
             };
         }
         default:
             return state;
-    };
+    }
 };

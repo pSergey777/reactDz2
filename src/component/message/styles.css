@@ -1,26 +1,31 @@
-.messageImg{
+.messageImg {
     border-radius: 50px;
     padding: 8px;
     object-fit: cover;
 }
-.messageContainer{
+
+.messageContainer {
     display: flex;
     padding: 0;
 }
-.yourMessage{
+
+.yourMessage {
     background-color: #989AD7;
     border-radius: 5px;
     padding: 8px 16px;
     color: white;
 }
-.youContainer{
-   justify-content: flex-start;
+
+.youContainer {
+    justify-content: flex-start;
 }
-.botMessage{
+
+.botMessage {
     background-color: #F1F1FB;
     border-radius: 5px;
     padding: 8px 16px;
 }
-.botContainer{
+
+.botContainer {
     justify-content: flex-end;
 }

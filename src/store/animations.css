@@ -1,0 +1,16 @@
+.animateChat {
+    animation-name: chatAnimation;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+}
+
+@keyframes chatAnimation {
+    from {
+        background-color: #3B3F9A;
+    }
+    to {
+        background-color: deeppink;
+    }
+}

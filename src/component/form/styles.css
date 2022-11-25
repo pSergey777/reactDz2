@@ -1,0 +1,8 @@
+.inputMessage {
+    width: 80%;
+}
+
+.messageBar {
+    display: flex;
+    margin-top: auto;
+}

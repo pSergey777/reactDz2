@@ -1,0 +1,19 @@
+.chatBox {
+    width: 100%;
+    display: flex;
+}
+
+.messageField {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 16px;
+}
+
+.messages {
+    align-self: flex-start;
+    overflow-y: scroll;
+    max-height: 320px;
+    width: 100%;
+}
