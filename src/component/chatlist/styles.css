@@ -1,0 +1,28 @@
+.chatList {
+    background-color: #3B3F9A;
+    height: 400px;
+    width: 360px;
+}
+
+.chatList ul {
+    list-style: none;
+    color: white;
+}
+
+.chatList ul li {
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+
+.chatList Typography {
+    color: white
+}
+
+.chatList a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.chatList a:hover {
+    opacity: 0.6;
+}
