@@ -1,7 +1,8 @@
 .chatList {
     background-color: #3B3F9A;
-    height: 400px;
-    width: 360px;
+    overflow-y: scroll;
+    height: 480px;
+    width: 100%;
 }
 
 .chatList ul {

@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./styles.css"
+import   "./styles.css"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <div>
-            <AppBar position="static" className={css.navBar}>
+            <AppBar position="static" className="navBar">
                 <Toolbar>
                     <Link to="/profile">
                         <IconButton edge="start" color="inherit">
@@ -21,7 +21,7 @@ const Header = () => {
                         </IconButton>
                     </Link>
 
-                    <span className={css.name}>{name} </span>
+                    <span className="name">{name} </span>
 
                     <Link to="/">
                         <IconButton edge="start" color="inherit">

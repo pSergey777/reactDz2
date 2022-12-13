@@ -1,5 +1,4 @@
-import {animateChat} from "../chats/actions";
-import animations from "../animations.css"
+import {latestMessage} from "../chats/actions";
 import {AUTHORS} from "../../utils/constants";
 import {chatBot} from "../../api";
 
@@ -18,12 +17,12 @@ export const addMessageWithThunk = (newMessage, chatId) => async (dispatch) => {
     dispatch(addMessage(newMessage, chatId));
 
     if (newMessage.author !== AUTHORS.BOT) {
-        dispatch(animateChat(chatId, newMessage.author, ""));
+        dispatch(latestMessage(chatId, newMessage.author));
         dispatch(addMessageWithThunk({author: AUTHORS.BOT, text: await chatBot(chatId, newMessage)}, chatId))
     }
 
     if (newMessage.author === AUTHORS.BOT) {
-        dispatch(animateChat(chatId, newMessage.author, animations.animateChat));
+        dispatch(latestMessage(chatId, newMessage.author));
     }
 
 };

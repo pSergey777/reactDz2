@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
-import css from "./styles.css"
+import  "./styles.css"
 import {AUTHORS} from "../../utils/constants";
 import {IconButton, TextField} from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
@@ -30,9 +30,9 @@ const Form = ({onAddMessage}) => {
     }, []);
 
     return (
-        <form className={css.messageBar} onSubmit={handleSubmit}>
+        <form className="messageBar" onSubmit={handleSubmit}>
             <TextField
-                className={css.inputMessage}
+                className="inputMessage"
                 label="Message"
                 onChange={handleMessageChange}
                 fullWidth={true}

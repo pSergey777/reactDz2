@@ -1,4 +1,4 @@
-import {ADD_CHAT, ANIMATE_CHAT} from "./actions";
+import {ADD_CHAT, LATEST_MESSAGE} from "./actions";
 
 const initialState = {
     chatList: [
@@ -18,7 +18,7 @@ const initialState = {
             picture: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Marina_Diamandis_%2814091068631%29_%28cropped%29_at_Fendi_close_crop.jpg"
         }
     ],
-    animateChat: {}
+    latestMessage: {}
 };
 
 export const chatListReducer = (state = initialState, action) => {
@@ -29,13 +29,12 @@ export const chatListReducer = (state = initialState, action) => {
                 chats: [...state.chatList, action.payload.newChat]
             }
 
-        case ANIMATE_CHAT:
+        case LATEST_MESSAGE:
             return {
                 ...state,
-                animateChat: {
+                latestMessage: {
                     chatId: action.payload.chaId,
-                    author: action.payload.author,
-                    css:action.payload.css
+                    author: action.payload.author
                 }
             }
 

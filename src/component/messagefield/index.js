@@ -1,5 +1,5 @@
-import React, { useCallback} from "react";
-import css from "./styles.css";
+import React, {useCallback} from "react";
+import "./styles.css";
 import Paper from '@material-ui/core/Paper';
 import ChatList from "../chatlist";
 import Form from "../form"
@@ -25,10 +25,10 @@ const MessageField = () => {
     }
 
     return (
-        <Paper elevation={1} className={css.chatBox}>
+        <Paper elevation={1} className="chatBox">
             <ChatList/>
-            <div className={css.messageField}>
-                <div className={css.messages}>
+            <div className="messageField">
+                <div className="messages">
                     {messages[chatId].map((message, index) =>
                         <Message key={index} message={message}/>
                     )}

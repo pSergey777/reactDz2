@@ -1,6 +1,6 @@
 import React from "react"
 import {useEffect, useState} from "react"
-import css from "./styles.css";
+import "./styles.css";
 import Paper from '@material-ui/core/Paper';
 import {randomProfile} from "../../api";
 
@@ -22,12 +22,13 @@ const Profile = () => {
         })
     }, []);
     return (
-        <Paper elevation={1} className={css.profile}>
-            <div className={css.content}>
+        <Paper elevation={1} className="profile">
+            <div className="content">
                 <h1>Profile</h1>
-                <img className={css.img} src={profileData.picture.large} alt=""/>
+                <img className="img" src={profileData.picture.large} alt=""/>
                 <p>Name: {profileData.name.first}</p>
                 <p>Last Name: {profileData.name.last}</p>
+
             </div>
         </Paper>
     )

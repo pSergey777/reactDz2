@@ -1,12 +1,12 @@
 export const ADD_CHAT = "CHATS::ADD_CHAT";
-export const ANIMATE_CHAT = "CHATS::ANIMATE_CHAT";
+export const LATEST_MESSAGE = "CHATS::LATEST_MESSAGE";
 
 export const addChat = (newChat) => ({
     type: ADD_CHAT,
     payload:newChat,
 });
 
-export const animateChat = (chaId,author,css) => ({
-    type: ANIMATE_CHAT,
-    payload:{chaId,author,css},
+export const latestMessage = (chaId, author) => ({
+    type: LATEST_MESSAGE,
+    payload:{chaId,author},
 });

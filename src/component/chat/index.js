@@ -1,64 +1,74 @@
-import React, {useEffect} from "react";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import React from "react";
 import Avatar from "@material-ui/core/Avatar";
-import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import ListItem from "@material-ui/core/ListItem";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
-import {animateChat} from "../../store/chats/actions";
-
+import "./styles.css";
+import Divider from "@material-ui/core/Divider";
+import {AUTHORS} from "../../utils/constants";
 
 const useStyles = makeStyles(() => ({
     root: {
-        color: "#FFFFFF",
+        color: "#FFFFFF"
     },
     lastMessage: {
         fontSize: "12px",
         opacity: "0.6"
+    },
+    pictureMobile: {
+        width: "30px",
+        height: "30px",
+        marginRight: "8px"
+    },
+    pictureDesktop: {
+        width: "50px",
+        height: "50px",
+        marginRight: "16px"
     }
 }));
 
 const Chat = (props) => {
 
     const classes = useStyles();
-    const chatAnimate = useSelector(store => store.chats.animateChat);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(animateChat("", "", ""))
-    }, [])
+    const latestMessageData = useSelector(store => store.chats.latestMessage);
 
     return (
-        <ListItem className={chatAnimate.chatId === props.chat.chatId ? chatAnimate.css : ""} alignItems="flex-start">
-            <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src={props.chat.picture}/>
-            </ListItemAvatar>
-            <ListItemText
-                className={classes.root}
-                primary="Brunch this weekend?"
-                secondary={
-                    <React.Fragment>
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.root}
-                            color="initial"
-                        >
-                            {props.chat.name}
-                        </Typography>
-                        <Typography
-                            component="span"
-                            className={classNames(classes.root, classes.lastMessage)}
-                        >
-                            {" — I'll be in your neighborhood doing errands this…"}
-                        </Typography>
-                    </React.Fragment>
-                }
-            />
+        <ListItem
+            className={latestMessageData !== undefined && latestMessageData.chatId === props.chat.chatId && latestMessageData.author === AUTHORS.BOT ? "animateChat" : ""}
+            alignItems="flex-start">
+            <div className="mobile">
+
+                <Avatar className={classes.pictureMobile} alt={props.chat.name} src={props.chat.picture}/>
+                <Typography
+                    component="p"
+                    variant="caption"
+                    color="initial"
+                >
+                    {props.chat.name}
+                </Typography>
+            </div>
+
+            <div className="desktop">
+                <Avatar className={classes.pictureDesktop} alt={props.chat.name} src={props.chat.picture}/>
+                <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.root}
+                    color="initial"
+                >
+                    {props.chat.name}
+                </Typography>
+                <Typography
+                    component="span"
+                    className={classNames(classes.root, classes.lastMessage)}
+                >
+                    {" — I'll be in your neighborhood doing errands this…"}
+                </Typography>
+            </div>
+            <Divider variant="inset" component="hr"/>
         </ListItem>
     )
 }
-
 export default Chat

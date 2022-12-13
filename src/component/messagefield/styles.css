@@ -14,6 +14,16 @@
 .messages {
     align-self: flex-start;
     overflow-y: scroll;
-    max-height: 320px;
+    height: 400px;
     width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+    .messages {
+        align-self: flex-start;
+        overflow-y: scroll;
+        height: 400px;
+        width: 200px;
+        font-size: 14px;
+    }
 }
