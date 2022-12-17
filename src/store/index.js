@@ -1,26 +1,19 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import {messagesReducer} from "./messages/reducer";
-import {profileReducer} from "./profile/reducer";
-import {chatListReducer} from "./chats/reducer";
-import {persistReducer, persistStore} from 'redux-persist'
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import storage from 'redux-persist/lib/storage'
-import {apiMiddleware} from 'redux-api-middleware';
 
-const persistConfig = {
-    key: "marinaMessenger",
-    storage,
-};
+import {playersReducer} from "./players";
 
-const persistedReducer = persistReducer(
-    persistConfig,
-    combineReducers({
-        chats: chatListReducer,
-        messages: messagesReducer,
-        profile: profileReducer
-    })
-);
 
-export const store = createStore(persistedReducer, applyMiddleware(thunk, apiMiddleware));
+const rootReducer = combineReducers({
+  players: playersReducer,
+})
+/**
+ * либо берем функцию compose из redux devtools либо из библиотеки redux
+ * */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const persist = persistStore(store);
+export const createAppStore = () => createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk),
+))
+
+export const store = createAppStore();

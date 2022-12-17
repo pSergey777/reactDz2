@@ -1,45 +1,35 @@
-import React, {useEffect} from 'react';
-import Header from "./component/header";
-import "./App.css";
-import MessageField from "./component/messagefield";
-import ChatList from "./component/chatlist";
-import PopUp from "./component/popup";
-import Profile from "./component/profile";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {latestMessage} from "./store/chats/actions";
+import {BrowserRouter, Link, Route, Switch} from 'react-router-dom';
+import {routerConfig} from "./pages/routerConfig";
 
-const App = () => {
 
-    //reset lastMessage
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(latestMessage("", ""))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    return (
-        <div className="container">
-            <Router>
-                <Header profile=""/>
-                <Switch>
-                    <Route path={"/profile"}>
-                        <Profile/>
-                    </Route>
-                    <Route path="/chats/:chatId?">
-                        <MessageField/>
-                    </Route>
-                    <Route path={"/"}>
-                        <ChatList/>
-                    </Route>
-                    <Route path="*">
-                        <div>Not Found 404</div>
-                    </Route>
-                </Switch>
-            </Router>
-            <PopUp/>
-        </div>
-    )
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <header>
+          <nav>
+            <ul>
+              {
+                routerConfig.map((route, index) => (<li key={route.path}>
+                  <Link to={route.path}>
+                    {route.name}
+                  </Link>
+                </li>))
+              }
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <Switch>
+            {
+              routerConfig.map((route, index) => (
+                <Route {...route} key={route.path}/>))
+            }
+          </Switch>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
 }
+
 export default App;
